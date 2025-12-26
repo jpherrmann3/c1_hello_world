@@ -1,8 +1,6 @@
 #ifndef HELLO_H
 #define HELLO_H
 
-void say_hello(void){
-    printf("Hello, World!\n");
-}
+void say_hello(const char *name);
 
 #endif

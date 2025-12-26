@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -std=c11 -Wall -Wextra -Werror -O0 -g
 
-hello_world: main.c
-	$(CC) $(CFLAGS) main.c -o hello_world
+hello_world: main.o hello.o
+	$(CC) $(CFLAGS) main.o hello.o -o hello_world
 
-main.o: man.c hello.h
+main.o: main.c hello.h
 	$(CC) $(CFLAGS) -c main.c
 
 hello.o: hello.c hello.h
