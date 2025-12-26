@@ -7,6 +7,10 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    say_hello(argv[1]);
+    for (size_t i = 1; i < (size_t)argc; i++)
+    {
+        say_hello(argv[i]);
+    }
+
     return 0;
 }
