@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -std=c11 -Wall -Wextra -Werror -O0 -g
+
+hello_world: main.c
+	$(CC) $(CFLAGS) main.c -o hello_world
+
+main.o: man.c hello.h
+	$(CC) $(CFLAGS) -c main.c
+
+hello.o: hello.c hello.h
+	$(CC) $(CFLAGS) -c hello.c
+
+clean:
+	rm -f *.o hello_world
