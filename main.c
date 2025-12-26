@@ -12,5 +12,9 @@ int main(int argc, char *argv[]) {
         say_hello(argv[i]);
     }
 
+    if (argc > 2) {
+        say_group_hello((const char **)&argv[1], (size_t)(argc - 1));
+    }
+
     return 0;
 }
