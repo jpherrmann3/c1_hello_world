@@ -29,7 +29,7 @@ void say_hello(const char *name) {
 void say_group_hello(const char **names, size_t count) {
     // 1. Compute total length
     // each name + ", " or "!\n" for the last one + "Hello, " + '\0'
-    size_t total_length = strlen("Hello, ") + 2; // for "Hello, " and "!\n"
+    size_t total_length = strlen("Hello, ") + strlen("!\n") + 1; // for "Hello, "!\n" and null terminator
     for (size_t i = 0; i < count; i++) {
         total_length += strlen(names[i]);
         if (i < count - 1) {
