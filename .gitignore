@@ -3,3 +3,11 @@
 
 # ignore compiled object files
 *.o
+
+# ignore executable files
+*.exe
+*.out
+
+# ignore project binary file
+hello_world
+
