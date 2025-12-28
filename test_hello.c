@@ -26,9 +26,15 @@ void test_multiple_names() {
     free(result);
 }
 
+void test_empty_names() {
+    char *result = say_group_hello(NULL, 0);
+    assert(result == NULL);
+}
+
 int main(void) {
     test_sing_name();
     test_multiple_names();
+    test_empty_names();
 
     printf("All tests passed!\n");
     return 0;
