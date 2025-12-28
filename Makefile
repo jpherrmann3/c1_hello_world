@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Werror -O0 -g
+CFLAGS = -std=c11 -Wall -Wextra -Werror -g -I src
 BUILD = build
 
 APP = hello_world

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>    // malloc, free
 #include <string.h>    // strlen, strcpy, strcat
-#include "hello/hello.h"
+#include "hello.h"
 
 
 char *say_group_hello(const char **names, size_t count) {

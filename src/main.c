@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "src/hello/hello.h"
+#include "hello/hello.h"
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
