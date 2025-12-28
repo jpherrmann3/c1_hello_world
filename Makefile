@@ -12,3 +12,8 @@ hello.o: hello.c hello.h
 
 clean:
 	rm -f *.o hello_world
+
+test: test_hello
+
+test_hello: test_hello.c hello.c hello.h
+	$(CC) $(CFLAGS) test_hello.c hello.c -o test_hello

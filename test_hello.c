@@ -1,0 +1,35 @@
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "hello.h"
+
+void test_sing_name() {
+    const char *names[] = {"James"};
+
+    char *result = say_group_hello(names, 1);
+    assert(result != NULL);
+    assert(strcmp(result, "Hello, James!\n") == 0);
+
+    free(result);
+}
+
+void test_multiple_names() {
+    const char *names[] = {"James", "Ana", "Rori"};
+
+    char *result = say_group_hello(names, 3);
+    assert(result != NULL);
+
+    assert(strcmp(result, "Hello, James, Ana, Rori!\n") == 0);
+
+    free(result);
+}
+
+int main(void) {
+    test_sing_name();
+    test_multiple_names();
+
+    printf("All tests passed!\n");
+    return 0;
+}
