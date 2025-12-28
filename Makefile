@@ -1,19 +1,23 @@
 CC = gcc
 CFLAGS = -std=c11 -Wall -Wextra -Werror -O0 -g
+BUILD = build
 
-hello_world: main.o hello.o
-	$(CC) $(CFLAGS) main.o hello.o -o hello_world
+APP = hello_world
+TEST = test_hello
 
-main.o: main.c hello.h
-	$(CC) $(CFLAGS) -c main.c
+APP_SRCS = src/main.c src/hello/hello.c
+TEST_SRCS = tests/test_hello.c src/hello/hello.c
 
-hello.o: hello.c hello.h
-	$(CC) $(CFLAGS) -c hello.c
+all: $(APP)
+
+$(APP): $(APP_SRCS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(TEST): $(TEST_SRCS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+test: $(TEST)
+	./$(TEST)
 
 clean:
-	rm -f *.o hello_world test_hello
-
-test: test_hello
-
-test_hello: test_hello.c hello.c hello.h
-	$(CC) $(CFLAGS) test_hello.c hello.c -o test_hello
+	rm -f $(APP) $(TEST)

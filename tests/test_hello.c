@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "hello.h"
+#include "hello/hello.h"
 
 void test_sing_name() {
     const char *names[] = {"James"};
