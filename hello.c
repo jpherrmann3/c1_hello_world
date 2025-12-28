@@ -9,7 +9,7 @@ void say_hello(const char *name) {
 
     // 2. Allocate memory
     char *greeting = malloc(length);
-    if (greeting == NULL) {
+    if (!greeting) {
         fprintf(stderr, "Memory allocation failed\n");
         return;
     }
@@ -38,21 +38,33 @@ void say_group_hello(const char **names, size_t count) {
     }
     // 2. Allocate memory
     char *greeting = malloc(total_length);
-    if (greeting == NULL) {
+
+    if (!greeting) {
         fprintf(stderr, "Memory allocation failed\n");
         return;
     }
-    // 3. Build the string
-    strcpy(greeting, "Hello, ");
+
+    // 3. Build string using a cursor pointer
+    char *p = greeting; // cursor pointer
+
+    const char *prefix = "Hello, ";
+    while ((*p++ = *prefix++) != '\0');
+    p--; // step back to overwrite null terminator
     for (size_t i = 0; i < count; i++) {
-        strcat(greeting, names[i]);
+        const char *name = names[i];
+        while ((*p++ = *name++) != '\0'); // copy name
+        p--; // step back to overwrite null terminator
         if (i < count - 1) {
-            strcat(greeting, ", ");
+            *p++ = ','; *p++ = ' ';
         }
     }
-    strcat(greeting, "!\n");
+    *p++ = '!';
+    *p++ = '\n';
+    *p = '\0'; // null terminator
+
     // 4. Print the greeting
     printf("%s", greeting);
+
     // 5. Free the allocated memory
     free(greeting);
 }
