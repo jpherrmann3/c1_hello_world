@@ -3,30 +3,12 @@
 #include <string.h>    // strlen, strcpy, strcat
 #include "hello.h"
 
-void say_hello(const char *name) {
-    // 1. Compute length: "Hello, " + name + "!\n" + '\0'
-    size_t length = strlen("Hello, ") + strlen(name) + strlen("!\n") + 1;
 
-    // 2. Allocate memory
-    char *greeting = malloc(length);
-    if (!greeting) {
-        fprintf(stderr, "Memory allocation failed\n");
-        return;
+char *say_group_hello(const char **names, size_t count) {
+    if (count == 0) {
+        return NULL;
     }
 
-    // 3. Build the string
-    strcpy(greeting, "Hello, ");
-    strcat(greeting, name);
-    strcat(greeting, "!\n");
-
-    // 4. Print the greeting
-    printf("%s", greeting);
-
-    // 5. Free the allocated memory
-    free(greeting);
-}
-
-void say_group_hello(const char **names, size_t count) {
     // 1. Compute total length
     // each name + ", " or "!\n" for the last one + "Hello, " + '\0'
     size_t total_length = strlen("Hello, ") + strlen("!\n") + 1; // for "Hello, "!\n" and null terminator
@@ -41,7 +23,7 @@ void say_group_hello(const char **names, size_t count) {
 
     if (!greeting) {
         fprintf(stderr, "Memory allocation failed\n");
-        return;
+        return NULL;
     }
 
     // 3. Build string using a cursor pointer
@@ -55,16 +37,13 @@ void say_group_hello(const char **names, size_t count) {
         while ((*p++ = *name++) != '\0'); // copy name
         p--; // step back to overwrite null terminator
         if (i < count - 1) {
-            *p++ = ','; *p++ = ' ';
+            *p++ = ',';
+            *p++ = ' ';
         }
     }
     *p++ = '!';
     *p++ = '\n';
     *p = '\0'; // null terminator
 
-    // 4. Print the greeting
-    printf("%s", greeting);
-
-    // 5. Free the allocated memory
-    free(greeting);
+    return greeting;
 }
