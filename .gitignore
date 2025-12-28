@@ -8,6 +8,5 @@
 *.exe
 *.out
 
-# ignore project binary file
-hello_world
-
+# ignore log files
+*.log
